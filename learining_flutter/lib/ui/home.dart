@@ -1,11 +1,92 @@
+// import 'dart:html';
+
 import 'package:flutter/material.dart';
+
+
+class BizCard extends StatelessWidget {
+  const BizCard({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Business Card"),
+        centerTitle: true,
+        backgroundColor: Colors.black54,
+      ),
+      backgroundColor: Colors.blueGrey,
+      body: Container(
+        alignment: Alignment.center,
+        child: Stack(
+          alignment: Alignment.topCenter,
+          children: <Widget> [
+            _getCard(),
+            _getAvatar()
+          ],
+        ),
+      )
+    );
+  }
+
+  Container _getCard() {
+    return Container(
+      width: 300,
+      height: 200,
+      margin: const EdgeInsets.all(50),
+      decoration: BoxDecoration(
+        color: Colors.black87,
+        borderRadius: BorderRadius.circular(14)
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget> [
+          const Text("Bhavesh Gujar",
+          style: TextStyle(
+              color: Colors.white ,
+              fontSize: 20,
+              fontWeight: FontWeight.w500),),
+          const Text("bhaveshgujar475@gmail.com",
+            style: TextStyle(
+              color: Colors.white)
+          ),
+          const Text("Any Queries",
+            style: TextStyle(
+              color: Colors.white)
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: const <Widget> [
+              Icon(Icons.person_outline,
+                color: Colors.white,
+              size: 20,),
+
+              Text("LinkedIn: @buildwithme",
+                style: TextStyle(color: Colors.white, fontSize: 15),
+              ),
+
+            ],
+          )
+        ],
+      ),
+    );
+  }
+
+  Container _getAvatar() {
+    return Container(
+      width: 100,
+      height: 100,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(50)),
+        border: Border.all(color: Colors.white, width: 1.2),
+        image:const DecorationImage(image: NetworkImage("https://picsum.photos/300/300"),
+        fit: BoxFit.cover),
+      ),
+    );
+  }
+}
 
 class ScaffoldExample extends StatelessWidget {
   const ScaffoldExample({Key? key}) : super(key: key);
-
-  _tapButton() {
-    debugPrint("Tapped Button");
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -16,8 +97,9 @@ class ScaffoldExample extends StatelessWidget {
         backgroundColor: Colors.amberAccent.shade700,
         actions: <Widget>[
           IconButton(onPressed: () => debugPrint("Email tapped"), icon: const Icon(Icons.email)),
-          IconButton(onPressed: _tapButton(), icon: const Icon(Icons.access_alarm)),
-          IconButton(onPressed: _tapButton(), icon: const Icon(Icons.add_a_photo)),
+          IconButton(onPressed: () => debugPrint("Alarm tapped"), icon: const Icon(Icons.access_alarm)),
+          IconButton(onPressed: () => debugPrint("Photo tapped"), icon: const Icon(Icons.add_a_photo)),
+          IconButton(onPressed: () => debugPrint("Account tapped"), icon: const Icon(Icons.account_balance)),
         ],
       ),
 
@@ -42,14 +124,6 @@ class ScaffoldExample extends StatelessWidget {
           children: const <Widget>[
 
             CustomButton()
-
-            // InkWell(
-            //   child: Text("Click me!",
-            //     style: TextStyle(fontSize:23.4),
-            //   ),
-            //   onTap: () => debugPrint("tapped..."),
-            //   borderRadius: BorderRadius.circular(50),
-            // )
           ],
 
         ),
@@ -107,5 +181,3 @@ class Home extends StatelessWidget {
     );
   }
 }
-
-

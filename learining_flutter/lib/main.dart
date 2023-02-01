@@ -7,5 +7,5 @@ import 'ui/home.dart';
 // }
 
 void main() => runApp(const MaterialApp(
-  home: ScaffoldExample(),
+  home: BizCard(),
 ));
